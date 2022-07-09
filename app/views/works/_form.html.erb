@@ -1,0 +1,55 @@
+<%= form_with(model: work) do |form| %>
+  <% if work.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+        <% work.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cargo %>
+    <%= form.text_field :cargo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad_vacantes %>
+    <%= form.text_field :cantidad_vacantes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="form-check" >
+    <p>Modalidad del Trabajo: 
+   <select name="modalidad">
+     <option>Remoto</option>
+     <option>Presencial</option>
+     <option>Mixto</option>
+   </select>
+    </p>
+
+  <div class="field">
+    <%= form.label :release_date %>
+    <%= form.date_select :release_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rango_salarial %>
+    <%= form.text_field :rango_salarial %>
+  </div>
+
+  <div class="field">
+      <%#= form.collection_select(:region_id, Region.all, :id, :region, prompt: true) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

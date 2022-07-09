@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>BolsaBootcamp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <link href="/assets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+  </head>
+  <body style="background-color:OldLace;">
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="col-12">
+          <% if user_signed_in? %>
+              <h2><b>Bienvenido: <%= current_user.email %>!!</b></h2>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+              <div class="text-right"><%= link_to 'Postulaciones', works_path, class: 'btn btn-info btn-lg' %></div>
+        </div>
+            <% else %>
+              <div>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                  <%= link_to 'Home', home_path, class: 'btn btn-secondary'%>
+                  </li>
+                </ul>
+                </nav> 
+              </div>
+            </div> 
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

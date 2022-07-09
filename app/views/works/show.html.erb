@@ -1,0 +1,112 @@
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <%= link_to 'Home', home_path, class: 'btn btn-secondary'%>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to 'Editar', edit_work_path(@work), class: "btn btn-info" %>
+                    </li>
+                </ul>
+            </nav> 
+        </div>
+<br>
+<h1>Detalles de la Postulación</h1>
+<hr>
+<br>
+
+<P>
+<strong>Cargo:</strong>
+<%= @work.cargo %>
+</p>
+
+<p>
+<strong>Cantidad de Vacanes:</strong>
+<%= @work.cantidad_vacantes %>
+</p>
+
+<p>
+<strong>Descripción:</strong>
+<%= @work.description %>
+</p>
+
+<p>
+<strong>Modalidad:</strong>
+<%= @work.modalidad %>
+</p>
+
+<p>
+<strong>Rango Salarial:</strong>
+<%= @work.rango_salarial %>
+</p>
+
+<p>
+<strong>Región:</strong>
+<%= @work.region %>
+</p>
+
+<br>
+<hr>
+<h4>Postular:</h4>
+
+    <div>
+        <% if @work.readers %>
+        <% @work.readers.each do |reader|%>
+        <strong><%= reader.id %>: 
+        <p><b>Nombre:</b>  </strong><%= "#{reader.first_name} #{reader.last_name}" %>
+        <br>
+        <p><b>Comentario:</b>  </strong><%="#{reader.comment}"%></p>
+        <% end %>
+    </div>
+    <% else %>
+        <% 'No Readers Added!!!'%>
+    <% end %>
+<br>
+<%= link_to 'Agregar Postulación', new_work_reader_path(@work) %>
+<br><br>
+<hr>
+<h2>Listado de Postulantes:</h2>
+<% @work.chapters.each do |chapter| %>
+    <p>
+        <strong>Nombre Completo:</strong>
+        <%= chapter.chapter_number %>
+    </p>
+
+    <p>
+        <strong>Cargo:</strong>
+        <%= chapter.cargo %>
+    </p>
+
+    <p>
+        <strong>Resumen:</strong>
+        <%= chapter.summary%>
+    </p>
+<% end %>
+<br>
+<br>
+
+<hr>
+<h3>Agregue una Oferta:</h3>
+<%= form_with model: [ @work, @work.chapters.build ] do |form| %>
+    <p>
+        <%= form.label :capítulo_número %><br>
+        <%= form.number_field :chapter_number %>
+    </p>
+    <p>
+        <%= form.label :título %><br>
+        <%= form.text_field :cargo %>
+    </p>
+    <p>
+        <%= form.label :resumen %><br>
+        <%= form.text_area :summary %>
+    </p>
+    <p>
+        <%= form.submit "Crear Oferta Nueva"%>
+    </p>
+<% end %>
+<br><br>
+<%= link_to 'Back', works_path, class:"btn btn-secondary active" %>

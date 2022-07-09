@@ -1,0 +1,40 @@
+<h1>Editar Oferta de Trabajo</h1>
+<%= form_for @work do |f| %>
+  <div>
+    <%= f.label :cargo %>
+    <%= f.text_field :cargo, class:"form-group col-md-5 "%>
+  </div>
+  <div>
+    <%= f.label :cantidad_vacantes %>
+    <%= f.text_field :cantidad_vacantes, class:"form-group col-md-5" %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description, class:"form-group col-md-5" %>
+  </div>
+  <div class="form-check" >
+    <p>Modalidad del Trabajo: 
+   <select name="modalidad">
+     <option>Remoto</option>
+     <option>Presencial</option>
+     <option>Mixto</option>
+   </select>
+    </p>
+  <div>
+    <%= f.label :release_date %>
+    <%#= f.date_field :release_date %>
+  </div>
+  <div>
+    <%= f.label :rango_salarial %>
+    <%= f.text_field :rango_salarial, step: :any, class:"form-group col-md-5" %>
+  </div>
+ <div class="field">
+      <%#= form.collection_select(:region_id, Region.all, :id, :region, prompt: true) %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @work, class:"btn btn-success active" %> |
+<%= link_to 'Back', works_path, class:"btn btn-secondary active" %>

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div>
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <%= link_to 'Home', home_path, class: 'btn btn-dark'%>
+        </li>
+        <li class="nav-item">  
+          <% if user_signed_in? %>
+          <%= link_to 'Ingresar Nueva Oferta ', new_work_path, class: 'btn btn-info'%>
+          <% end %>
+        </li>
+        <li class="nav-item">  
+          <% if user_signed_in? %>
+          <a class='btn btn-warning' href="http://localhost:3000/works/99/readers/new" target="_top">Postular</a>
+          <% end %>
+        </li>
+
+      </ul>
+    </nav>  
+  </div>
+  <div class="row">
+    <div class="col-12"> 
+<br>
+<h1>Ofertas de Trabajo</h1>
+
+<div class="table-responsive-lg">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Cargo</th>
+      <th>Cantidad de Vacantes</th>
+      <th>Descripción</th>
+      <th>Modalidad</th>
+      <th>Rango Salarial</th>
+      <th>Fecha de Inicio</th>
+      <th>Región</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @works.each do |work| %>
+      <tr>
+        <td><b><%= work.cargo %></b></td>
+        <td><%= work.cantidad_vacantes %></td>
+        <td><%= work.description %></td>
+        <td><%= work.modalidad %></td>
+        <%#= work.release_date %>
+        <td><%= work.rango_salarial %></td>
+        <%#= image_tag(url_for(work.region.flag_img)) %>
+        <%#= image_tag region.image_url(:thumb) %>
+        <% if user_signed_in? %>
+        <td><%= link_to 'Ver', work, class: 'btn btn-outline-success' %></td>
+        <% end %>
+        <% if (user_signed_in? && (current_user == work.user)) %>
+            <td><%= link_to 'Editar', edit_work_path(work), class: 'btn btn-outline-warning' %></td>
+            <td><%= link_to 'Eliminar', work, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger'%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br><br>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', home_path, class:"btn btn-secondary active" %>

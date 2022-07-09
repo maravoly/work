@@ -1,0 +1,65 @@
+<br><br>
+<nav class="navbar navbar-expand-sm bg-secondary navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <%= link_to 'Home', home_path, class: 'btn btn-secondary'%>
+        </li>
+      </ul>
+</nav>
+<div class="container">
+
+<div class="row">
+  <div class="col-6">
+  
+<br>
+<h1>Nueva Oferta de Trabajo</h1>
+<%= form_with model: Work.new do |f| %>
+
+  <div class="form-check" >
+    <%= f.label :cargo, "Puesto o Cargo" %>
+    <%= f.text_field :cargo, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-check" >
+    <%= f.label :cantidad_vacantes, "Cantidad de Vacantes" %>
+    <%= f.number_field :cantidad_vacantes, step: :any, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-check" >
+    <%= f.label :description, "Descripción" %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-check" >
+    <p>Modalidad del Trabajo: 
+   <select name="modalidad">
+     <option>Remoto</option>
+     <option>Presencial</option>
+     <option>Mixto</option>
+   </select>
+    </p>
+  </div>
+  <br>
+  <div class="form-check" >
+    <%= f.label :release_date, "Fecha Inicio" %>
+    <%#= f.date_field :release_date, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-check" >
+    <%= f.label :rango_salarial, "Sueldo" %>
+    <%= f.number_field :rango_salarial, step: :any, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="field">
+      <%#= form.collection_select(:region_id, Region.all, :id, :region, prompt: true) %>
+  </div>
+<br>
+  <div class="form-check" >
+    <%= f.submit "Crear Oferta", class: "btn btn-info mt-3" %>
+  </div>
+  <br>
+<% end %>
+</div>
+  </div>
+  </div>
+<%= link_to 'Back', works_path, class:"btn btn-secondary active" %>

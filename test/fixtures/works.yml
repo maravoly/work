@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Programador:
+  cargo: 'Ingeniero de Control y Programación' ,
+  cantidad_vacantes:	1 ,
+  description: "Requisitos:
+    • 2 años de experiencia en posiciones similares, 2-3 años de trayectoria total.
+    • Título Profesional Ingeniería Industrial o Carrera A fin.
+    • Conocimientos Específicos en Microsoft, Power BI, Tableau, SAP o similar (Visualización de datos). Planificación, Supply Chain.
+    • Experiencia en Logística o Supply Chain.
+    • Capacidad Analítica, Visión Estratégica, Orientación a Resultados, Integración de Procesos, Capacidad de Adaptación, Metódico, Afinidad con uso de Tecnología y lenguaje digital, Capacidad de Liderazgo.", 
+  modalidad: 'presencial' , 
+  release_date: '2022-08-05' ,
+  rango_salarial:	'1.000.0000 - 1.400.000' ,
+  region: Region.find_by(name: 'Arica')
+  
+ user: <%= User.last %>

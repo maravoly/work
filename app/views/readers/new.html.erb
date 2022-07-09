@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+      <div class="col-10">
+<h1>Postulación</h1>
+
+    <%= form_with(model:[@work, @reader]) do |form| %>
+        <div class="field">
+            <%= form.label :nombre %>
+            <%= form.text_field :first_name,  class:"form-control" %>
+        </div>
+    <br>
+        <div class="field">
+            <%= form.label :apellido %>
+            <%= form.text_field :last_name %>
+        </div>
+    <br>
+        <div class="field">
+            <%= form.label :rut %>
+            <%= form.number_field :rut %>
+        </div>
+    <br>
+    <div class="field">
+            <%= form.label :edad %>
+            <%= form.number_field :age %>
+        </div>
+    <br>
+    <div class="form-check" >
+        <p>Género: 
+    <select name="genero">
+        <option>Femenino</option>
+        <option>Masculino</option>
+        <option>No especificar</option>
+    </select>
+        </p>
+    </div>
+    <br>
+    <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
+    <p>
+        Subir Curriculum Vitae:
+        <input type="file" name="pdf, .doc, .docx" accept="application/pdf, .doc, .docx"><br><br>
+        <input type="submit" value="Enviar datos" class= 'btn btn-info mt-3'>
+    </p>
+    </form>   
+    <% end %>
+        </div>
+    </div>
+</div>
+    <br>
+    <br>
+<%= link_to 'Back', works_path, class:"btn btn-secondary active" %>
